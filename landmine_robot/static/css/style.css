@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat, sans-serif;
+  }
+
+  .wrapper {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .heading,
+  .sub-heading {
+    text-align: center;
+    padding-right: 200px;
+  }
+
+  .heading {
+    padding: 10px 0;
+  }
+
+  .heading h1 {
+    margin: 0;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 100px;
+  }
+
+  .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .img-container img {
+    width: 500px;
+  }
+
+  .sensor {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .name,.value {
+    margin-right: 20px;
+  }
+
+  .btn-container {
+    margin-top: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-inner-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ion-icon {
+    font-size: 64px;
+  }
+
+  .btn {
+    background: none;
+    border: 1px solid #000;
+    padding: 10px;
+    border-radius: 25px;
+    transition: all 0.2s;
+  }
+
+  .btn:hover {
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+    transition: all 0.2s;
+  }
+
+  .stop-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }

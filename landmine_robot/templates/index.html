@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <title>wifi localization robot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+    <script src="/static/js/application.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="heading"><h2>Landmine detection Robot</h2></div>
+      <div class="container">
+        <div class="col">
+          <div class="img-container">
+            <img src="http://192.168.0.75:8081" alt="Camera live video" height="480" width="640">
+          </div>
+        </div >
+      </div>
+    </div>
+      <div class="btn-container">
+        <div class="btn-inner-container">
+          <div class="btn-col">
+            <a href="#" id="up" >
+            <ion-icon type="submit" name="arrow-dropup-circle"></ion-icon>
+            </a>
+          </div>
+          <div class="btn-col stop-btn">
+            <a href="#" id="left" >
+            <ion-icon type="submit" name="arrow-dropleft-circle"></ion-icon>
+            </a>
+            <a href="#" >
+            <button  class="btn">STOP</button>
+            </a>
+            <a href="#" id="right" >
+            <ion-icon name="arrow-dropright-circle"></ion-icon>
+            </a>
+          </div>
+          <div class="btn-col">
+            <a href="#" id="down" >
+            <ion-icon name="arrow-dropdown-circle"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+     <script>
+
+
+$(document).ready(function(){
+    //connect to the socket server.
+    var socket = io.connect('http://' + document.domain + ':' + location.port + '/test');
+
+    //receive details from server
+    socket.on('newnumber', function(msg){
+        $('#loc').html(msg.number[0]);
+        $('#gas').html(msg.number[1]);
+	$('#hum').html(msg.number[1]);
+	$('#temp').html(msg.number[1]);
+
+    });
+
+});
+
+$( document ).ready(function(){
+    $("#down").on("mousedown", function() {
+     $.get('/move_reverse');
+     }).on('mouseup', function() {
+     $.get('/stop');
+    });
+    $("#up").on("mousedown", function() {
+     $.get('/move_forward');
+     }).on('mouseup', function() {
+     $.get('/stop');
+    });
+    $("#left").on("mousedown", function() {
+     $.get('/move_left');
+     }).on('mouseup', function() {
+     $.get('/stop');
+    });
+    $("#right").on("mousedown", function() {
+     $.get('/move_right');
+     }).on('mouseup', function() {
+     $.get('/stop');
+    });
+});
+</script>
+
+    <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+  </body>
+</html>
